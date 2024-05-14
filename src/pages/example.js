@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './example.css';
+import logo from './logo.svg';
 
 export default function Example() {
   return (
