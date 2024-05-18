@@ -10,16 +10,15 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="container"> 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/mealplan" element={<Mealplan />} />
-          <Route path="/example" element={<Example />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/mealplan" element={<Mealplan />} />
+        <Route path="/example" element={<Example />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </>
   );
 }
+//TODO <Route path='*' element={<Pagenotfound />} />
 
 export default App;
