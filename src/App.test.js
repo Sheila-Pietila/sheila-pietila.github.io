@@ -11,28 +11,30 @@ import { HashRouter } from 'react-router-dom';
 
 // Simple-path (white box test all options)
 
-test('renders site home nav button', () => {
-  render(<HashRouter><App/></HashRouter>); 
-  const buttonElement = screen.getByText(/site name/i); 
-  expect(buttonElement).toBeInTheDocument(); 
-})
+describe('Navbar', () => {
+  it('renders site home nav button', () => {
+    render(<HashRouter><App/></HashRouter>); 
+    const buttonElement = screen.getByText(/site name/i); 
+    expect(buttonElement).toBeInTheDocument(); 
+  })
 
-test('renders site meal planner nav button', () => {
-  render(<HashRouter><App/></HashRouter>); 
-  const buttonElement = screen.getByText(/meal planner/i); 
-  expect(buttonElement).toBeInTheDocument(); 
-})
+  it('renders site meal planner nav button', () => {
+    render(<HashRouter><App/></HashRouter>); 
+    const buttonElement = screen.getByText(/meal planner/i); 
+    expect(buttonElement).toBeInTheDocument(); 
+  })
 
-test('renders site example page nav button', () => {
-  render(<HashRouter><App/></HashRouter>); 
-  const buttonElement = screen.getByText(/react example/i); 
-  expect(buttonElement).toBeInTheDocument(); 
-})
+  it('renders site example page nav button', () => {
+    render(<HashRouter><App/></HashRouter>); 
+    const buttonElement = screen.getByText(/react example/i); 
+    expect(buttonElement).toBeInTheDocument(); 
+  })
 
-test('renders site about nav button', () => {
-  render(<HashRouter><App/></HashRouter>); 
-  const buttonElement = screen.getByText(/about/i); 
-  expect(buttonElement).toBeInTheDocument(); 
+  it('renders site about nav button', () => {
+    render(<HashRouter><App/></HashRouter>); 
+    const buttonElement = screen.getByText(/about/i); 
+    expect(buttonElement).toBeInTheDocument(); 
+  })
 })
 
 // Code-path (non-basic method calls: N/A?) 
