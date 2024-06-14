@@ -45,7 +45,7 @@ describe('<ButtonLink />', () => {
     )
 
     expect(getByRole('link')).toHaveTextContent('Site Name')
-    expect(getByRole('link')).toHaveProperty('href', '#/')
+    expect(getByRole('link')).toHaveProperty('href', expect.stringMatching(/.+\/#\/$/))
   })
 })
 
