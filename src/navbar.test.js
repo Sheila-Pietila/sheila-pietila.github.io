@@ -1,7 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import { getAllByRole, render, screen } from '@testing-library/react';
 import Navbar from './navbar.js'; 
 import { HashRouter } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import PageLink from './navbar.js'; 
 
 // TODO finish test suites
 
@@ -38,8 +39,7 @@ describe('Location list', () => {
 // Code-path (non-basic method calls) 
 
 describe('<ButtonLink />', () => {
-    // TODO figure out what the correct inputs-outputs are here
-  it('should have correct children and href', () => {
+  it('should have correct name and href', () => {
     const { getByRole } = render(
         <HashRouter><Link to="/" className="site-title">Site Name</Link></HashRouter>
     )
@@ -49,14 +49,26 @@ describe('<ButtonLink />', () => {
   })
 })
 
-describe('PageLink', () => {
-    it.todo('should have correct children and href')
+describe('<PageLink />', () => {
+    // TODO figure out what the correct inputs-outputs are here
+    it.todo('should have correct name and href')
+    /*it('should have correct name and href', () => {
+        const { getByRole } = render(
+            <HashRouter><PageLink to="/place">Location Name</PageLink></HashRouter>
+        )
+
+        getAllByRole(getByRole('navigation'), 'link').toString(); 
+        expect(getAllByRole(getByRole('navigation'), 'link')).toHaveTextContent('Location Name')
+        expect(getAllByRole(getByRole('navigation'), 'link')).toHaveProperty('href', expect.stringMatching(/.+\/#\/place\/$/))
+    })*/
+
     it.todo('should mark active if current path matches')
     it.todo('should not mark active if current path does not match')
 })
 
 // Parameter-range (args and results: N/A, no args)
 
+// TODO advanced navbar testing
 
 // Performance: Slideable goal, "better" and "worse", involves speed and memory. 
 //    How To?: https://stackoverflow.com/questions/62214918/how-to-performance-test-react-js-application
