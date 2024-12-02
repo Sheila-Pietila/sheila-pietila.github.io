@@ -4,6 +4,12 @@ import { HashRouter } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import PageLink from './navbar.js'; 
 
+/* Author's note: 
+Creating more tests than necessary on this very simple feature 
+for the purpose of practicing and learning testing itself. 
+Similar to using a noop to make sure a structure functions. 
+*/
+
 // TODO finish test suites
 
 // ---- Pass/Fail: First layer. ----
@@ -23,7 +29,7 @@ describe('Location list', () => {
         expect(buttonElement).toBeInTheDocument(); 
     })
 
-    test('renders site example page nav button', () => {
+    it('renders site example page nav button', () => {
         render(<HashRouter><Navbar/></HashRouter>); 
         const buttonElement = screen.getByText(/react example/i); 
         expect(buttonElement).toBeInTheDocument(); 
@@ -36,7 +42,7 @@ describe('Location list', () => {
     })
 })
 
-// Code-path (non-basic method calls) 
+// Code-path (method calls above getter-setter complexity levels) 
 
 describe('<ButtonLink />', () => {
   it('should have correct name and href', () => {
@@ -44,23 +50,52 @@ describe('<ButtonLink />', () => {
         <HashRouter><Link to="/" className="site-title">Site Name</Link></HashRouter>
     )
 
-    expect(getByRole('link')).toHaveTextContent('Site Name')
-    expect(getByRole('link')).toHaveProperty('href', expect.stringMatching(/.+\/#\/$/))
+    // Should be titled "Site Name" and bring user to path /#/
+    expect(getByRole('link')).toHaveTextContent('Site Name');
+    expect(getByRole('link')).toHaveProperty('href', expect.stringMatching(/.+\/#\/$/));
   })
 })
 
-describe('<PageLink />', () => {
-    // TODO figure out what the correct inputs-outputs are here
+
+/**
+ * TODO Test design theory
+ * What am I testing, and why? 
+ * 
+ * 1. Basic pass/fail code testing to set and forget, 
+ * so it throws me errors if something ceases to work as expected. 
+ * Should this be done as errors instead? 
+ * 
+ * 2. Basic pass/fail black box testing to set for skimming later, 
+ * to be able to quickly check that all of the web page's parts 
+ * look right in the end result. Right links, right buttons, etc. 
+ * This is about the *end display*, the html and css results, 
+ * not about the code's methods and modules in javascript and framework. 
+ * 
+ * What in either of these categories are worth testing? 
+ * Currently, I have an extremely basic page, and probably don't need much. 
+ * There should be a bar on the page with a home link and a list of links. 
+ * They should go to the correct format of hash page (should this be skipped 
+ * to allow it to be easily changed? Or better to test and *know* if it changes?). 
+ * 
+ * What are the core features? Not currently implemented. Nothing here. 
+ * Semi-core features? Home link exists, list of links exists. 
+ */
+
+describe('<PageLink />s', () => {
+    // This is over-the-top thorough testing. Decided it's okay to have a non ideal format here for completeness, and tests elsewhere will be more refined to true need. 
     it.todo('should have correct name and href')
-    /*it('should have correct name and href', () => {
+    it('should have correct href pattern', () => {
         const { getByRole } = render(
             <HashRouter><PageLink to="/place">Location Name</PageLink></HashRouter>
         )
 
-        getAllByRole(getByRole('navigation'), 'link').toString(); 
-        expect(getAllByRole(getByRole('navigation'), 'link')).toHaveTextContent('Location Name')
-        expect(getAllByRole(getByRole('navigation'), 'link')).toHaveProperty('href', expect.stringMatching(/.+\/#\/place\/$/))
-    })*/
+        var pagelinks = getAllByRole(getByRole('navigation'), 'link'); 
+        for(let pagelink of pagelinks) {
+            //expect(pagelink).toHaveTextContent(expect.stringMatching(/.*/));
+            //expect(pagelink).toHaveTextContent('Site Name');
+            expect(pagelink).toHaveProperty('href', expect.stringMatching(/.+\/#\/.*/));
+        }
+    })
 
     it.todo('should mark active if current path matches')
     it.todo('should not mark active if current path does not match')
