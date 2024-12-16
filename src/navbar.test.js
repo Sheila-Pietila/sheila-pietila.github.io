@@ -11,6 +11,7 @@ Similar to using a noop to make sure a structure functions.
 */
 
 // TODO finish test suites
+// TODO find test leaks and needed teardowns
 
 // ---- Pass/Fail: First layer. ----
 
@@ -55,31 +56,6 @@ describe('<ButtonLink />', () => {
     expect(getByRole('link')).toHaveProperty('href', expect.stringMatching(/.+\/#\/$/));
   })
 })
-
-
-/**
- * TODO Test design theory
- * What am I testing, and why? 
- * 
- * 1. Basic pass/fail code testing to set and forget, 
- * so it throws me errors if something ceases to work as expected. 
- * Should this be done as errors instead? 
- * 
- * 2. Basic pass/fail black box testing to set for skimming later, 
- * to be able to quickly check that all of the web page's parts 
- * look right in the end result. Right links, right buttons, etc. 
- * This is about the *end display*, the html and css results, 
- * not about the code's methods and modules in javascript and framework. 
- * 
- * What in either of these categories are worth testing? 
- * Currently, I have an extremely basic page, and probably don't need much. 
- * There should be a bar on the page with a home link and a list of links. 
- * They should go to the correct format of hash page (should this be skipped 
- * to allow it to be easily changed? Or better to test and *know* if it changes?). 
- * 
- * What are the core features? Not currently implemented. Nothing here. 
- * Semi-core features? Home link exists, list of links exists. 
- */
 
 describe('<PageLink />s', () => {
     // This is over-the-top thorough testing. Decided it's okay to have a non ideal format here for completeness, and tests elsewhere will be more refined to true need. 
